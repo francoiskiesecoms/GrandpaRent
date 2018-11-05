@@ -1,2 +1,16 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.flex {
+  display:flex;
+}
+
+.leftbox {
+  flex: 1 1 auto;
+}
+
+.map {
+  flex: 0 0 450px;
+}
+
+
