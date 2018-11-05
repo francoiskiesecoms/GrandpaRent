@@ -4,7 +4,6 @@ class BookingsController < ApplicationController
     @booking = Booking.create(booking_params)
     @booking.grandparent = @grandparent
     @booking.save
-    redirect_to grandparents_path
   end
 
   private

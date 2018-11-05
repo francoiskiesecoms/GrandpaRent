@@ -1,7 +1,6 @@
 class GrandparentsController < ApplicationController
   def index
     @grandparents = Grandparent.all
-    @current_user = current_user
   end
 
   def new
@@ -14,8 +13,7 @@ class GrandparentsController < ApplicationController
   end
 
   def create
-    @grandparent = Grandparent.create
-    redirect_to grandparents_path
+    @grandparent = Grandparent.create(grandparent_params)
   end
 
   private
