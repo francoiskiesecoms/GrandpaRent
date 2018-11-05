@@ -10,20 +10,21 @@
 
  <%= link_to "My profile", profile_path %>
 
-
 <div class="flex">
   <div class="leftbox">
-    <div class="container">
+    <div class="container" style = "background-color: blue;">
       <div class="row">
-        <div class="col">
+        <div class="col-12 col-sm-4 col-md-3 ">
+          <% @grandparents.each do |grandparent| %>
           <div class="card">
-
+            <!-- .... code  -->
           </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <div class="map">
-
-  </div>
+  <div class="map" style = "background-color: red;">
+    <!-- gem map plus tard   -->
+  </div>„
 </div>
