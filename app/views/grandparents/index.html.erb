@@ -16,10 +16,15 @@
       <div class="row">
         <div class="col-12 col-sm-4 col-md-3 ">
           <% @grandparents.each do |grandparent| %>
-          <div class="card">
-            <!-- .... code  -->
+          <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://annesofi-bijoux.marcadet.fr/blog/wp-content/uploads/2012/07/mamika-banane.jpg');">
+            <div class="card-category"><%= grandparent.speciality%></div>
+            <div class="card-description">
+              <h2> link_to grandparent.name, grandparent_path </h2>
+              <p> To add the link to see the reviews linked to the grandparent</p>
+            </div>
+            <%= link_to 'img class="card-user" src="https://p1.storage.canalblog.com/18/48/1228697/95753678_o.jpg">'.html_safe,user_path %>
           </div>
-          <% end %>
+        <% end %>
         </div>
       </div>
     </div>
