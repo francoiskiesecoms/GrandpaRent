@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get '/profile', to: 'profiles#dashboard'
+  post '/user', to: 'users#update'
   devise_for :users
   resources :grandparents
   root to: 'grandparents#index'
