@@ -10,6 +10,18 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <div class="banner_wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.aobora.com/wp-content/uploads/accompagner-personne-agee.png');">
+      <div class="banner-content">
+        <h1>Look for a grandparent to have fun with !</h1>
+        <p>Spending quality time with your elderly has never been easier </p>
+        <div class="banner-search">
+          <input type="search" id="mySearch" name="zipcode"
+            placeholder="Search by city or zipcode...">
+          <a class="btn btn-primary btn-lg">Search !</a>
+    </div>
+  </div>
+</div>
+
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
