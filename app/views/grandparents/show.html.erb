@@ -1,2 +1,75 @@
-<h1>Grandparents#show</h1>
-<p>Find me in app/views/grandparents/show.html.erb</p>
+
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid Layout demo</title>
+
+    <!-- Bootstrap + Fontawesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+  <div class="container text-center">
+    <div class="grid">
+
+          <div class="card main-section">
+            <div class="card">
+              <div class="card-content">
+
+                <%= image_tag "salope.jpg", width: 150, class:"img-circle" %>
+                <h2><%= @grandparent.name %></h2>
+                <p><%= @grandparent.age%></p>
+
+              </div>
+            </div>
+          </div>
+          <div class="card stats-section1">
+            <div class="card">
+              <div class="card-content">
+                  <h3>Age</h3>
+                  <p><%=@grandparent.age%></p>
+<i class="fas fa-map-marked-alt"></i>
+              </div>
+            </div>
+          </div>
+            <div class="card stats-section2">
+              <div class="card">
+              <div class="card-content">
+                <h3>Address</h3>
+                <p><%=@grandparent.address%></p>
+                <p><%=icon('far', 'address-book', class: 'strong')%></p>
+              </div>
+            </div>
+          </div>
+          <div class="card stats-section3">
+            <div class="card">
+              <div class="card-content">
+                <h3>Speciality</h3>
+                <p><%= @grandparent.speciality %></p3>
+                <p><%=icon('far', 'address-book', class: 'strong')%></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card introduction">
+            <div class="card">
+              <div class="card-content">
+                <h3>More about <%= @grandparent.name%></h3>
+                <p class="text-justify">
+                  <%= @grandparent.speciality %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
