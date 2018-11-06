@@ -1,0 +1,8 @@
+<%= simple_form_for [@grandparent, @booking] do |f| %>
+  <!-- [...] -->
+  <%= f.input :review_content %>
+  <%= f.input :review_rating %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+  <!-- [...] -->
+<% end %>
+
