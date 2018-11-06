@@ -11,11 +11,10 @@
  <%= link_to "My profile", profile_path %>
 
 <div class="flex">
-  <div class="leftbox">
-    <div class="container" style = "background-color: blue;">
-      <div class="row">
-        <div class="col-12 col-sm-4 col-md-3 ">
-          <% @grandparents.each do |grandparent| %>
+  <div class="container" style = "background-color: blue;">
+    <div class="row">
+      <% @grandparents.each do |grandparent| %>
+        <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://annesofi-bijoux.marcadet.fr/blog/wp-content/uploads/2012/07/mamika-banane.jpg');">
               <div class="card-category"> <%= grandparent.speciality%></div>
               <div class="card-description">
@@ -25,16 +24,17 @@
                 <% average = 0 %>
                 <% size = grandparent.bookings.size %>
                 <% grandparent.bookings.each do |booking| %>
-                  <% average += (boosking.review_rating/size) %>
+                    <% average += booking.review_rating/size unless booking.review_rating.nil?%>
                 <% end %>
-                <%= average %>
+                <%= "average: " + average.to_s %>
               </div>
-              <%= link_to "Owner", showprofile_path(grandparent.user_id) %>
+               <%= link_to "Owner", showprofile_path(grandparent.user_id) %>
             </div>
-        <% end %>
-      </div>
+        </div>
+      <%end%>
+    </div>
   </div>
   <div class="map" style = "background-color: red">
-    <!-- gem map plus tard   -->
-  </div>„
+      <!-- gem map plus tard   -->
+  </div>
 </div>
