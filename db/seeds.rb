@@ -6,5 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
 Grandparent.create(name: "Francois", age: 90, address: "Be central", speciality: "Mongol").save
 Grandparent.create(name: "Romane", age: 110, address: "Be central", speciality: "Belly dancer").save
+

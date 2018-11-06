@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :grandparents do
     resources :reviews, only: [:index, :new, :create, :show]
+
     resources :bookings, only: [:create, :edit, :update]
+
   end
   root to: 'grandparents#index'
 

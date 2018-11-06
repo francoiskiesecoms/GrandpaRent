@@ -24,6 +24,13 @@ class GrandparentsController < ApplicationController
   def show
     @grandparent = Grandparent.find(params[:id])
     @booking = Booking.new
+
+  end
+
+  def destroy
+    @grandparent = Grandparent.find(params[:id])
+    @grandparent.destroy
+    redirect_to profile_path
   end
   private
   def grandparent_params
