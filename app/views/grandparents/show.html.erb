@@ -1,8 +1,21 @@
-<h1>Grandparents#show</h1>
-<p>Find me in app/views/grandparents/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <h1><%= @grandparent.name %></h1>
+        <h1><%=@grandparent.address%></h1>
 
-<h2><%= @grandparent.name %></h2>
 
-<% simple_form_for [@grandparent, @booking] for |b| %>
-  <%= b.button :submit %>
-<% end %>
+        <!-- form  -->
+
+        <%= simple_form_for [@grandparent, @booking ] do |f| %>
+          <!-- [...] -->
+          <%= f.submit "Book!", class: "btn btn-primary" %>
+          <!-- [...] -->
+
+        <% end %>
+
+        <%= @grandparent.bookings %>
+
+    </div>
+  </div>
+</div>
