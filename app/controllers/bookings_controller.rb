@@ -18,8 +18,14 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @grandparent = Grandparent.find(params[:grandparent_id])
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
+    if @booking.save
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   private
