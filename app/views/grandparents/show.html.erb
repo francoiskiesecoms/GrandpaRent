@@ -1,4 +1,8 @@
 <h1>Grandparents#show</h1>
 <p>Find me in app/views/grandparents/show.html.erb</p>
 
+<h2><%= @grandparent.name %></h2>
 
+<% simple_form_for [@grandparent, @booking] for |b| %>
+  <%= b.button :submit %>
+<% end %>

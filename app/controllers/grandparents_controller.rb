@@ -24,6 +24,7 @@ class GrandparentsController < ApplicationController
   def show
     @grandparent = Grandparent.find(params[:id])
     @booking = Booking.new
+
   end
   private
   def grandparent_params
