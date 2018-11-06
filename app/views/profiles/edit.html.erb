@@ -1,0 +1,13 @@
+<h1> Modify my profile </h1>
+
+<%=  link_to "Go back home", grandparents_path  %>
+
+
+<%= simple_form_for(current_user) do |f| %>
+  <!-- [...] -->
+  <%= f.input :name %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit %>
+  <!-- [...] -->
+<% end %>
