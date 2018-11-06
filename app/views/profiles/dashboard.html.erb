@@ -3,15 +3,31 @@
 
 
 <h1> My email: <%= current_user.email %> </h1>
-<h1> Modify my profile </h1>
-
-<%=  link_to "Go back home", grandparents_path  %>
 
 
-<%= simple_form_for(current_user) do |f| %>
+<%= link_to "Edit my profile", profile_edit_path  %>
+<%= link_to "Go back", grandparents_path  %>
+
+<h2> Add a grand parent </h2>
+
+<%= simple_form_for(@grandparent) do |f| %>
   <!-- [...] -->
   <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :address %>
+  <%= f.input :speciality %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit %>
   <!-- [...] -->
 <% end %>
+
+<ul>
+<% current_user.bookings.each do |booking| %>
+  <li> <%= Grandparent.find(booking.grandparent_id).name %> --- <%= link_to "Add a review", new_grandparent_review_path(booking.grandparent_id)%> </li>%
+<%end%>
+</ul>
+
+
+
+
