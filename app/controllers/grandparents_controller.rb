@@ -26,6 +26,12 @@ class GrandparentsController < ApplicationController
     @booking = Booking.new
 
   end
+
+  def destroy
+    @grandparent = Grandparent.find(params[:id])
+    @grandparent.destroy
+    redirect_to profile_path
+  end
   private
   def grandparent_params
     params.require(:grandparent).permit(:name, :age, :address, :speciality, :user_id, :photo)
