@@ -22,11 +22,21 @@
   <!-- [...] -->
 <% end %>
 
+<h2>Here is my bookings</h2>
 <ul>
 <% current_user.bookings.each do |booking| %>
   <li> <%= Grandparent.find(booking.grandparent_id).name %> --- <%= link_to "Add a review", new_grandparent_review_path(booking.grandparent_id)%> </li>%
 <%end%>
 </ul>
+
+<h2>Here is the history of bookings of your grandpas</h2>
+
+<% current_user.grandparents.each do |grandparent| %>
+  <% grandparent.bookings.each do |booking| %>
+    <li><%= grandparent.name + " has been booked on " + booking.created_at.to_date.to_s + " by " +  grandparent.user.name  %></li>
+  <%end%>
+<%end%>
+
 
 
 
