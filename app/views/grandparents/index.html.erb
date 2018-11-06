@@ -23,9 +23,9 @@
               </div>
               <div class="reviews">
                 <% average = 0 %>
-                <% size = grandparent.reviews.size %>
-                <% grandparent.reviews.each do |x| %>
-                  <% average += (x.rating/size) %>
+                <% size = grandparent.bookings.size %>
+                <% grandparent.bookings.each do |booking| %>
+                  <% average += (booking.review_rating/size) %>
                 <% end %>
                 <%= average %>
               </div>

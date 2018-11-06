@@ -11,8 +11,18 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    @grandparent = Grandparent.find(params[:grandparent_id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+  end
+
   private
   def booking_params
-    params.require(:booking).permit(:grandparent_id)
+    params.require(:booking).permit(:grandparent_id, :review_content, :review_rating)
   end
 end
