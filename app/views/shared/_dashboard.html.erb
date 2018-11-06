@@ -1,0 +1,41 @@
+
+
+
+
+  <div class="grid">
+      <div class="card main-section">
+        <div class="card-content">
+          <img src="images/seb.jpeg" alt="" width="150" class="img-circle">
+          <h2><strong><%=current_user.name%></strong></h2>
+          <p>CTO at Le Wagon</p>
+          <%= link_to "Edit my profile", profile_edit_path, :class=>"btn btn-primary btn-lg"  %>
+        </div>
+      </div>
+      <div class="card contributions">
+        <div class="card-content">
+          <h3>3,536</h3>
+          <p>contributions</p>
+        </div>
+      </div>
+      <div class="card followers">
+        <div class="card-content">
+          <h3>E-mail</h3>
+          <p><%= current_user.email%></p>
+        </div>
+      </div>
+      <div class="card repos">
+        <div class="card-content">
+          <h3>119</h3>
+          <p>repositories</p>
+        </div>
+      </div>
+      <div class="card info">
+        <div class="card-content">
+          <h3><%= current_user.name %></h3>
+          <p class="text-justify">
+            I am a full-stack developer with 9 years of experience working in startups. Scratching your own itch? Working on a startup project? Lots of ideas but frustrated that you can't code them? Confused with agencies' or freelances' quotes? No clue when a developer is talking? Time to learn to code with Le Wagon with a 9-week intensive and immersive bootcamp!
+          </p>
+        </div>
+      </div>
+    </div>
+

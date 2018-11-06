@@ -13,6 +13,7 @@ class GrandparentsController < ApplicationController
   def create
     @grandparent = Grandparent.new(grandparent_params)
     @grandparent.user = current_user
+
     if @grandparent.save
       flash[:success] = "Content Successfully Created"
       redirect_to profile_path
