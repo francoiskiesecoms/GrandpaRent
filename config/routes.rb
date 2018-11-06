@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :grandparents do
     resources :reviews, only: [:index, :new, :create, :show]
     resources :bookings, only: [:create, :edit, :update]
+
   end
   root to: 'grandparents#index'
 

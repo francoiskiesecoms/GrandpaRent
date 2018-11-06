@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
     @booking             = Booking.new
     @booking.grandparent = @grandparent
     @booking.user = current_user
+
     if @booking.save
       redirect_to grandparent_path(@grandparent)
     else
