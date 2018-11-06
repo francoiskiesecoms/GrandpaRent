@@ -2,3 +2,13 @@
 <p>Find me in app/views/grandparents/show.html.erb</p>
 
 
+<h1><%= @grandparent.name %></h1>
+<h1>@grandparent.address</h1>
+
+<!-- form  -->
+
+<%= simple_form_for [@grandparent, @booking ] do |f| %>
+  <!-- [...] -->
+  <%= f.submit "Book!", class: "btn btn-primary" %>
+  <!-- [...] -->
+<% end %>
