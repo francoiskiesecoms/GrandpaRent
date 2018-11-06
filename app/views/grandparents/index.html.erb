@@ -23,20 +23,18 @@
               </div>
               <div class="reviews">
                 <% average = 0 %>
-                <% size = grandparent.reviews.size %>
-                <% grandparent.reviews.each do |x| %>
-                  <% average += (x.rating/size) %>
+                <% size = grandparent.bookings.size %>
+                <% grandparent.bookings.each do |booking| %>
+                  <% average += (boosking.review_rating/size) %>
                 <% end %>
                 <%= average %>
               </div>
               <%= link_to "Owner", showprofile_path(grandparent.user) %>
             </div>
         <% end %>
-        </div>
       </div>
-    </div>
   </div>
-  <div class="map" style = "background-color: red;">
+  <div class="map" style = "background-color: red">
     <!-- gem map plus tard   -->
   </div>„
 </div>
