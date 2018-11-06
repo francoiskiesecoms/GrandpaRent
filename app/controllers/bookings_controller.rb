@@ -1,9 +1,14 @@
 class BookingsController < ApplicationController
   def create
-    @grandparent = Grandparent.find(:grandparent_id)
-    @booking = Booking.create(booking_params)
+    @grandparent         = Grandparent.find(params[:grandparent_id])
+    @booking             = Booking.new
     @booking.grandparent = @grandparent
-    @booking.save
+    @booking.user = current_user
+    if @booking.save
+      redirect_to grandparent_path(@grandparent)
+    else
+      render :new
+    end
   end
 
   private
