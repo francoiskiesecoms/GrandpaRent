@@ -12,3 +12,8 @@
   <%= f.submit "Book!", class: "btn btn-primary" %>
   <!-- [...] -->
 <% end %>
+
+<h1>Look at the reviews of this grandpa before booking</h1>
+<% @grandparent.reviews.each do |review| %>
+  <li><%= review.content %></li>
+<%end%>
