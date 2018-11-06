@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_110533) do
+ActiveRecord::Schema.define(version: 2018_11_06_154014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_11_06_110533) do
     t.bigint "grandparent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "review_content"
+    t.integer "review_rating"
     t.index ["grandparent_id"], name: "index_bookings_on_grandparent_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -34,15 +36,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_110533) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.index ["user_id"], name: "index_grandparents_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.bigint "grandparent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "rating"
-    t.index ["grandparent_id"], name: "index_reviews_on_grandparent_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,5 +55,4 @@ ActiveRecord::Schema.define(version: 2018_11_06_110533) do
   add_foreign_key "bookings", "grandparents"
   add_foreign_key "bookings", "users"
   add_foreign_key "grandparents", "users"
-  add_foreign_key "reviews", "grandparents"
 end

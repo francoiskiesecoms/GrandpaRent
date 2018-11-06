@@ -11,23 +11,26 @@
  <%= link_to "My profile", profile_path %>
 
 <div class="flex">
-  <div class="card-grandparents" style = "background-color: blue;" >
-      <div class=card-grandparent-container>
-        <% @grandparents.each do |grandparent| %>
-          <div class="card-grandparent" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://annesofi-bijoux.marcadet.fr/blog/wp-content/uploads/2012/07/mamika-banane.jpg');"></div>
-          <div class="card-category"> <%= grandparent.speciality%></div>
-          <div class="card-name">
-            <h2> <%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
-          </div>
-          <div class="card-reviews">
-            <% average = 0 %>
-            <% size = grandparent.reviews.size %>
-            <% grandparent.reviews.each do |x| %>
-            <% average += (x.rating/size) %>
-            <% end %>
-            <%= average %>
-          </div>
-          <div class="owner"> <%= link_to "Owner", showprofile_path(grandparent.user_id) %></div>
+  <div class="leftbox">
+    <div class="container" style = "background-color: blue;">
+      <div class="row">
+        <div class="col-12 col-sm-4 col-md-3 ">
+          <% @grandparents.each do |grandparent| %>
+            <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://annesofi-bijoux.marcadet.fr/blog/wp-content/uploads/2012/07/mamika-banane.jpg');">
+              <div class="card-category"> <%= grandparent.speciality%></div>
+              <div class="card-description">
+                <h2> <%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
+              </div>
+              <div class="reviews">
+                <% average = 0 %>
+                <% size = grandparent.bookings.size %>
+                <% grandparent.bookings.each do |booking| %>
+                  <% average += (boosking.review_rating/size) %>
+                <% end %>
+                <%= average %>
+              </div>
+              <%= link_to "Owner", showprofile_path(grandparent.user_id) %>
+            </div>
         <% end %>
       </div>
   </div>

@@ -25,7 +25,14 @@
 <h2>Here is my bookings</h2>
 <ul>
 <% current_user.bookings.each do |booking| %>
-  <li> <%= Grandparent.find(booking.grandparent_id).name %> --- <%= link_to "Add a review", new_grandparent_review_path(booking.grandparent_id)%> </li>%
+  <li> <%= Grandparent.find(booking.grandparent_id).name %> ---
+      <% if (booking.review_content.nil?) && (booking.review_rating.nil?) %>
+        <%= link_to "Add a review", edit_grandparent_booking_path(booking.grandparent, booking)%>
+      <% else %>
+        <%= "Reviewed"%>
+      <% end %>
+
+  </li>
 <%end%>
 </ul>
 
