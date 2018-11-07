@@ -20,17 +20,17 @@
         <%= f.input :age %>
         <%= f.input :address %>
         <%= f.input :speciality %>
-        <%= f.input :photo %>
-        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.input :picture %>
+        <%= f.input :picture_cache, as: :hidden %>
         <%= f.button :submit %>
       <% end %>
     </div>
     <div class="margin-right">
     <% current_user.grandparents.each do |grandparent| %>
-      <% if grandparent.photo.url %>
+      <% if grandparent.picture.url %>
       <div class="col-md-2">
 
-        <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.photo, height: 300, width: 400, crop: :fill %>');">
+        <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.picture, height: 300, width: 400, crop: :fill %>');">
             <div class="card-category"> </div>
               <div class="card-description">
                   <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>

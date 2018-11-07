@@ -3,12 +3,13 @@
     <div class="row">
       <% @grandparents.each do |grandparent| %>
         <div class="col-xs-12 col-sm-2 col-md-4">
-          <% if grandparent.photo.nil? %>
-            <div class="card">
-          <%else%>
-            <div class="card">
-          <%end%>
-
+          <% if grandparent.picture.url %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path grandparent.picture.url, height: 300, width: 400, crop: :fill %>')">
+          <% else %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('https://cdn.someecards.com/posts/grandpa-grandson-birth-text-ok-pIq.png')">
+          <% end %>
             <%= link_to 'showprofile_path(grandparent.user_id)' do %>
               <div class = "avatar-card">
                 <% if grandparent.user.photo.nil? %>
