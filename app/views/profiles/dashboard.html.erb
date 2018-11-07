@@ -9,9 +9,9 @@
 <%= link_to "Go back", grandparents_path  %>
 
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-xs-4 col-sm-offset-4">
+    <div class="col-md-6 paddingform">
       <h2> Add a grand parent </h2>
 
       <%= simple_form_for(@grandparent) do |f| %>
@@ -25,57 +25,59 @@
         <%= f.button :submit %>
       <% end %>
     </div>
+    <div class="margin-right">
+    <% current_user.grandparents.each do |grandparent| %>
+      <% if grandparent.photo.url %>
+      <div class="col-md-2">
+
+        <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.photo, height: 300, width: 400, crop: :fill %>');">
+            <div class="card-category"> </div>
+              <div class="card-description">
+                  <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
+                </div>
+                <%= link_to "Owner", showprofile_path(grandparent.user) %>
+                <%= link_to "Destroy",  grandparent_path(grandparent),
+                    data: { confirm: 'Are you sure?' }, method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+
 </div>
 
-
-<h2>Here is my bookings</h2>
-<ul>
-<% current_user.bookings.each do |booking| %>
-  <li> <%= Grandparent.find(booking.grandparent_id).name %> ---
-      <% if (booking.review_content.nil?) && (booking.review_rating.nil?) %>
-        <%= link_to "Add a review", edit_grandparent_booking_path(booking.grandparent, booking)%>
-      <% else %>
-        <%= "Reviewed"%>
-      <% end %>
-
-  </li>
-<%end%>
-</ul>
-
-<h2>Here is the history of bookings of your grandpas</h2>
-
-<% current_user.grandparents.each do |grandparent| %>
-  <% grandparent.bookings.each do |booking| %>
-    <li><%= grandparent.name + " has been booked on " + booking.created_at.to_date.to_s + " by " +  grandparent.user.name  %></li>
-  <%end%>
-<%end%>
-
-<h3>Grandparents created by <%= current_user.name %></h3>
-
-
-
-
-
-  <div class="container">
-    <div class="row">
-      <% current_user.grandparents.each do |grandparent| %>
-        <% if grandparent.photo.url %>
-        <div class="col-12 col-sm-4 col-md-3 ">
-          <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.photo, height: 300, width: 400, crop: :fill %>');">
-              <div class="card-category"> </div>
-                <div class="card-description">
-                    <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
-                  </div>
-                  <%= link_to "Owner", showprofile_path(grandparent.user) %>
-                  <%= link_to "Destroy",  grandparent_path(grandparent),
-                      data: { confirm: 'Are you sure?' }, method: :delete %>
-              </div>
-            </div>
+<div class="main-container">
+  <div>
+    <h2>Here is my bookings</h2>
+    <ul>
+    <% current_user.bookings.each do |booking| %>
+      <li> <%= Grandparent.find(booking.grandparent_id).name %> ---
+          <% if (booking.review_content.nil?) && (booking.review_rating.nil?) %>
+            <%= link_to "Add a review", edit_grandparent_booking_path(booking.grandparent, booking)%>
+          <% else %>
+            <%= "Reviewed"%>
           <% end %>
-        <% end %>
-      </div>
-    </div>
+
+      </li>
+    <%end%>
+    </ul>
+  </div>
+  <div>
+    <h2>Here is the history of bookings of your grandpas</h2>
+
+    <% current_user.grandparents.each do |grandparent| %>
+      <% grandparent.bookings.each do |booking| %>
+        <li><%= grandparent.name + " has been booked on " + booking.created_at.to_date.to_s + " by " +  grandparent.user.name  %></li>
+      <%end%>
+    <%end%>
+
+    <h3>Grandparents created by <%= current_user.name %></h3>
+  </div>
+
+
+
+
     <div class="map" style = "background-color: red;">
       <!-- gem map plus tard   -->
     </div>
