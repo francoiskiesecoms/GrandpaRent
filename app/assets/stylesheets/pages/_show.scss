@@ -1,59 +1,40 @@
-.grid-grandparent {
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.profile {
   display: grid;
-  grid-template-columns: 500px 1fr 1fr;
-  grid-template-rows: 40% 60%;
+  grid-template-columns: 400px 1fr 1fr;
+  grid-template-rows: 50% 50%;
+  padding: 30px;
+}
+.text-center {
   text-align: center;
 }
-.card-grandparent-main {
-  background: white;
-  padding: 20px;
-  box-shadow: 0 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px;
+.profile .card-grandparent-main {
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
 }
-
-.card-grandparent {
-  display: block;
-  text-align: center;
-}
-
-.card-grandparent-reviews {
+.card-grandparent-main, .card-grandparent-reviews, .card-grandparent-bookings, .card-grandparent-info {
   background: white;
-  padding: 20px;
+  padding: 50px;
   box-shadow: 0 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin: 10px;
-  grid-row: 1 / span 1;
-  grid-column: 2 / span 1;
 }
-.card-grandparent-bookings {
-  background: white;
-  padding: 20px;
-  box-shadow: 0 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px;
-  grid-row: 1 / span 1;
-  grid-column: 3 / span 1;
-}
-.card-grandparent-info {
-  background: white;
-  padding: 20px;
-  box-shadow: 0 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px;
+.profile .card-grandparent-info {
   grid-row: 2 / span 2;
   grid-column: 2 / span 2;
 }
+
 .img-circle {
   border-radius: 50%;
+}
+
+div {
+  display: block;
 }

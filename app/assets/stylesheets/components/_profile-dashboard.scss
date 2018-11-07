@@ -1,83 +1,115 @@
-.grid {
+
+.profile {
   display: grid;
-  grid-template-columns: 400px 1fr 1fr 1fr;
+  grid-template-columns: 350px 1fr 1fr 1fr;
   grid-template-rows: 50% 50%;
-  margin: 110px;
+  height: 450px;
+  padding: 30px;
 }
-
-.main-section {
-grid-row: 1 / span 2;
-grid-column: 1 / span 1;
+.profile .main {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
 }
-
-.contributions {
-grid-row: 1 / span 1;
-grid-column: 2 / span 1;
+.profile .description {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 3;
 }
-
-.followers {
-grid-row: 1 / span 1;
-grid-column: 3 / span 1;
-}
-
-.repos {
-grid-row: 1 / span 1;
-grid-column: 4 / span 1;
-}
-
-.info {
-grid-row: 2 / span 1;
-grid-column: 2 / span 3;
-}
-
-.card {
+.main, .description, .stat {
   background: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 50px;
+  margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin: 10px;
+}
+@media (max-width: 940px) {
+  .profile {
+    display: block;
+  }
 }
 
-
-
-body {
-  margin: Opx;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 18px;
-  background: #F4F4F4;
+/* Fonts and colors */
+.profile h2 {
+  font-size: 22px;
 }
-p {
+.profile h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.profile p {
+  color: rgba(0,0,0,0.6);
+}
+.profile .btn {
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  margin-top: 30px;
+  background: #37B686;
+}
+.profile .btn:hover {
+  background: #37B686;
+  opacity: 0.7;
+}
+.stat h3 {
+  color: #37B686;
+  font-size: 28px;
+}
+.stat p {
+  color: rgba(0,0,0,0.25);
+  font-size: 19px;
+}
+.description h3 {
+  color: rgba(0,0,0,0.9);
+  font-size: 21px;
+  font-weight: normal;
+}
+.description p {
+  color: rgba(0,0,0,0.5);
   font-weight: lighter;
 }
-h1, h2, h3 {
-  font-family: 'Varela Round', sans-serif;
-  font-weight: bold;
+
+
+
+
+
+// .padded {
+//   padding: 30px 0;
+// }
+
+// .paddingform {
+//   padding: 0 130px;
+// }
+
+// .margin-right {
+//   margin-right: 20px;
+// }
+
+#wrapper {
+    width: 100vh;
+
+    overflow: hidden; /* will contain if #first is longer than #second */
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+
 }
-h1 {
-  font-size: 30px;
+#first {
+
+    float:left; /* add this */
+    text-align: center;
+    padding: 30px;
+    width: 50%;
+
 }
-h2 {
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-h3 {
-  font-size: 23px;
-}
-.padded {
-  padding: 30px 0;
+#second {
+
+    overflow: hidden;
+    text-align: center;
+    padding: 30px;
+    width: 50%;
 }
 
-.paddingform {
-  padding: 0 130px;
-}
-
-.margin-right {
-  margin-right: 20px;
-}
-
-.main-container {
-
-  display: flex;
+.margincardprofile {
+  margin:10px;
 }

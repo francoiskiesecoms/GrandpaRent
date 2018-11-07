@@ -1,17 +1,14 @@
 
+
+
 <%= render "shared/dashboard" %>
-
-
-
-
-
 
 <%= link_to "Go back", grandparents_path  %>
 
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-6 paddingform">
+    <div class="col-md-6 paddingform ">
       <h2> Add a grand parent </h2>
 
       <%= simple_form_for(@grandparent) do |f| %>
@@ -26,9 +23,12 @@
       <% end %>
     </div>
     <div class="margin-right">
+    <h2>Grandparents created by <%= current_user.name %></h2>
     <% current_user.grandparents.each do |grandparent| %>
+
+
       <% if grandparent.picture.url %>
-      <div class="col-md-2">
+      <div class="col-md-3">
 
         <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.picture, height: 300, width: 400, crop: :fill %>');">
             <div class="card-category"> </div>
@@ -47,9 +47,9 @@
 
 </div>
 
-<div class="main-container">
-  <div>
-    <h2>Here is my bookings</h2>
+<div id="wrapper">
+    <div id="first">
+    <h1>My bookings</h1>
     <ul>
     <% current_user.bookings.each do |booking| %>
       <li> <%= Grandparent.find(booking.grandparent_id).name %> ---
@@ -63,8 +63,8 @@
     <%end%>
     </ul>
   </div>
-  <div>
-    <h2>Here is the history of bookings of your grandpas</h2>
+    <div id="second">
+    <h1>History of bookings</h1>
 
     <% current_user.grandparents.each do |grandparent| %>
       <% grandparent.bookings.each do |booking| %>
@@ -72,14 +72,10 @@
       <%end%>
     <%end%>
 
-    <h3>Grandparents created by <%= current_user.name %></h3>
   </div>
+</div>
 
 
 
-
-    <div class="map" style = "background-color: red;">
-      <!-- gem map plus tard   -->
-    </div>
 
 

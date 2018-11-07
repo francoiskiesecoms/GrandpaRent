@@ -1,31 +1,37 @@
-<div class="grid-grandparent">
-  <div class="card-grandparent-main">
-    <div class="card-grandparent">
-        <img src="" class="img-circle">
-        <h1><%= @grandparent.name %></h1>
-        <h2><%=@grandparent.address%></h2>
-        <p><%= @grandparent.speciality %></p>
-        <p class= "btn btn-primary"><%= link_to "Book now !", grandparent_bookings_path(grandparent) %></p>
+<div class="container">
+  <div class="profile text-center">
+    <div class="card-grandparent-main">
+      <div class="card-grandparent">
+          <img src="" class="img-circle">
+          <h1><%= @grandparent.name %></h1>
+          <h2><%=@grandparent.address%></h2>
+          <p><%= @grandparent.speciality %></p>
+          <%= simple_form_for [@grandparent, @booking ] do |f| %>
+            <!-- [...] -->
+          <%= f.submit "Book!", class: "btn btn-primary" %>
+            <!-- [...] -->
+          <% end %>
+      </div>
     </div>
-  </div>
-  <div class="card-grandparent-reviews">
-    <div class="card-grandparent">
-      <h3> <%= @grandparent.reviews.count %></h3>
-      <p> reviews </p>
-      <%= link_to "Check it out", grandparent_reviews_path(grandparent) %>
+    <div class="card-grandparent-reviews">
+      <div class="card-grandparent">
+        <h3> <%= @grandparent.bookings.count%></h3>
+        <p> reviews </p>
+        <%= link_to "Check it out", grandparent_booking_path(@grandparent) %>
+      </div>
     </div>
-  </div>
-  <div class="card-grandparent-bookings">
-    <div class="card-grandparent">
-      <h3><%= @grandparent.bookings.count %></h3>
-      <p> bookings </p>
+    <div class="card-grandparent-bookings">
+      <div class="card-grandparent">
+        <h3><%= @grandparent.bookings.count %></h3>
+        <p> bookings </p>
+      </div>
     </div>
-  </div>
-  <div class="card-grandparent-info">
-    <div class="card-grandparent">
-      <h3> More about <%= @grandparent.name %></h3>
-      <p> <%= @grandparent.description %></p>
-      #rajouter une description pour le grandparent
+    <div class="card-grandparent-info">
+      <div class="card-grandparent">
+        <h3> More about <%= @grandparent.name %></h3>
+        <p> #rajouter une description pour le grandparent</p>
+
+      </div>
     </div>
   </div>
 </div>
