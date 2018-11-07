@@ -6,9 +6,9 @@
 <%= link_to "Go back", grandparents_path  %>
 
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-6 paddingform">
+    <div class="col-md-6 paddingform ">
       <h2> Add a grand parent </h2>
 
       <%= simple_form_for(@grandparent) do |f| %>
@@ -23,12 +23,12 @@
       <% end %>
     </div>
     <div class="margin-right">
-    <h1>Grandparents created by <%= current_user.name %></h1>
+    <h2>Grandparents created by <%= current_user.name %></h2>
     <% current_user.grandparents.each do |grandparent| %>
       <% if grandparent.photo.url %>
-      <div class="col-md-2">
+      <div class="col-md-3">
 
-        <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.photo, height: 300, width: 400, crop: :fill %>');">
+        <div class="card margincardprofile" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.photo, height: 300, width: 400, crop: :fill %>');">
             <div class="card-category"> </div>
               <div class="card-description">
                   <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
