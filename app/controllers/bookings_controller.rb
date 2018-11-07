@@ -1,15 +1,21 @@
 class BookingsController < ApplicationController
   def create
-    @grandparent         = Grandparent.find(params[:grandparent_id])
-    @booking             = Booking.new
+    @grandparent = Grandparent.find(params[:grandparent_id])
+    @booking = Booking.new(booking_params)
     @booking.grandparent = @grandparent
     @booking.user = current_user
+    valid_dates = (@booking.start_date >= @grandparent.start_date) && (@booking.end_date <= @grandparent.end_date)
+    availability = @grandparent.bookings.all? do |booking|
+      (@booking.end_date < booking.start_date) && (@booking.end_date > booking.end_date) && (@booking.start_date < booking.start_date) && (@booking.start_date > booking.end_date)
+    end
 
-    if @booking.save
+    if valid_dates && availability
+      @booking.save
       redirect_to grandparent_path(@grandparent)
     else
-      render :new
+
     end
+
   end
 
   def edit
@@ -30,6 +36,6 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.require(:booking).permit(:grandparent_id, :review_content, :review_rating)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
