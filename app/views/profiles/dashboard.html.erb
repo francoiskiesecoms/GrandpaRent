@@ -5,6 +5,8 @@
 
 
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-6 paddingform ">
@@ -18,6 +20,8 @@
         <%= f.input :speciality %>
         <%= f.input :picture %>
         <%= f.input :picture_cache, as: :hidden %>
+        <%= f.date_select :start_date %>
+        <%= f.date_select :end_date %>
         <%= f.button :submit %>
       <% end %>
     </div>
@@ -67,7 +71,7 @@
 
     <% current_user.grandparents.each do |grandparent| %>
       <% grandparent.bookings.each do |booking| %>
-        <li><%= grandparent.name + " has been booked on " + booking.created_at.to_date.to_s + " by " +  grandparent.user.name  %></li>
+        <li><%= grandparent.name + " has been booked from " + booking.start_date.time.to_s + " by " +  grandparent.user.name + " to " + booking.end_date.time.to_s %></li>
       <%end%>
     <%end%>
 
