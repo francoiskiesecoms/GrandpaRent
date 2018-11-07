@@ -18,7 +18,9 @@
     <!-- Profile picture with dropdown list -->
     <div class="navbar-grandparents-item">
       <div class="dropdown">
-        <img src="<%= current_user.photo.url%>" class="avatar dropdown-toggle" id="navbar-grandparents-menu" data-toggle="dropdown">
+        <% if current_user%>
+          <img src="<%= current_user.photo.url%>" class="avatar dropdown-toggle" id="navbar-grandparents-menu" data-toggle="dropdown">
+        <%end%>
 
         <ul class="dropdown-menu dropdown-menu-right navbar-grandparents-dropdown-menu">
 
