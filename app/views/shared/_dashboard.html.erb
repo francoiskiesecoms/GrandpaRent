@@ -6,7 +6,7 @@
       <div class="profile text-center">
         <div class="main">
           <div class="main-content">
-            <img src="" alt="" width="150" class="img-circle">
+            <%= image_tag current_user.photo.url, class: "img-circle", style:"width: 120px;"  %>
             <h2><%= current_user.name.capitalize %></h2>
 
             <%= link_to "Edit my profile", profile_edit_path, :class=>"btn btn-primary btn-lg"  %>
@@ -32,9 +32,9 @@
           </div>
         <div class="description">
           <div class="description-content">
-            <h3>More about Sebastien</h3>
+            <h3>More about <%= current_user.name%></h3>
             <p class="text-justify">
-              I am a full-stack developer with 9 years of experience working in startups. Scratching your own itch? Working on a startup project? Lots of ideas but frustrated that you can't code them? Confused with agencies' or freelances' quotes? No clue when a developer is talking? Time to learn to code with Le Wagon with a 9-week intensive and immersive bootcamp!
+              I am a full-stack developer with 9 years of experience working in startups. Scratching your own itch? Working on a startup project? Lots of ideas but frustrated that you can't code them?
             </p>
           </div>
         </div>
