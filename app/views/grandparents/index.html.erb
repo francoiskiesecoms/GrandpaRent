@@ -1,34 +1,39 @@
-<h1>Grandparents#index</h1>
-<p>Find me in app/views/grandparents/index.html.erb</p>
-
-
-<% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-   <%= link_to "Sign in", new_user_session_path%>
-<% end %>
-
- <%= link_to "My profile", profile_path %>
-
 <div class="flex">
   <div class="container" style = "background-color: blue;">
     <div class="row">
       <% @grandparents.each do |grandparent| %>
-        <div class="col-xs-12 col-sm-4 col-md-3">
-            <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://annesofi-bijoux.marcadet.fr/blog/wp-content/uploads/2012/07/mamika-banane.jpg');">
+        <div class="col-xs-12 col-sm-2 col-md-4">
+          <% if grandparent.photo.nil? %>
+            <div class="card">
+          <%else%>
+            <div class="card"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path Grandparent.last.photo, height: 300, width: 400, crop: :fill %>')">
+
+
+          <%end%>
+
+            <%= link_to 'showprofile_path(grandparent.user_id)' do %>
+              <div class = "avatar-card">
+                <% if grandparent.user.photo.nil? %>
+                  <!-- add photo avatar neutre -->
+                <%else%>
+                  <%= cl_image_tag grandparent.user.photo, height: 50, width: 50, height:50, crop: :thumb, gravity: :face, radius: :max, format: :png %>
+                <%end%>
+              </div>
+            <%end%>
               <div class="card-category"> <%= grandparent.speciality%></div>
               <div class="card-description">
                 <h2> <%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
-              </div>
-              <div class="reviews">
                 <% average = 0 %>
                 <% size = grandparent.bookings.size %>
                 <% grandparent.bookings.each do |booking| %>
                     <% average += booking.review_rating/size unless booking.review_rating.nil?%>
                 <% end %>
-                <%= "average: " + average.to_s %>
+                <h6 id = "reviews"> <%= average.to_s %> </h6>
               </div>
-               <%= link_to "Owner", showprofile_path(grandparent.user_id) %>
+
+
             </div>
         </div>
       <%end%>
