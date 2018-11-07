@@ -1,7 +1,7 @@
 <div class="navbar-grandparents navbar-fixed-top">
   <!-- Logo -->
   <a href="/" class="navbar-grandparents-brand">
-    <img src="http://www.tribunejuive.info/wp-content/uploads/2017/06/smiley-1.jpg" alt="logo">
+
   </a>
 
   <!-- Right Navigation -->
@@ -12,12 +12,14 @@
     <% else %>
        <%= link_to "Sign in", new_user_session_path, class: "navbar-grandparents-item navbar-grandparents-link"%>
     <% end %>
+    <%= link_to "Home page", grandparents_path, class: "navbar-grandparents-item navbar-grandparents-link"%>
 
 
     <!-- Profile picture with dropdown list -->
     <div class="navbar-grandparents-item">
       <div class="dropdown">
-        <img src="https://i.pinimg.com/474x/b9/6f/cf/b96fcf719498b98ce659375a6d502b82--happy-smile-happy-faces.jpg" class="avatar dropdown-toggle" id="navbar-grandparents-menu" data-toggle="dropdown">
+        <img src="<%= current_user.photo.url%>" class="avatar dropdown-toggle" id="navbar-grandparents-menu" data-toggle="dropdown">
+
         <ul class="dropdown-menu dropdown-menu-right navbar-grandparents-dropdown-menu">
 
           <li><%= link_to "My dashboard", profile_path, class: "navbar-grandparents-item navbar-grandparents-link" %></li>
