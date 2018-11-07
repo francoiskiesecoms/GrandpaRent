@@ -5,6 +5,7 @@
   background-position: center;
   color: white;
   position: relative;
+  margin: 10px;
 }
 
 .card-category {
@@ -39,6 +40,7 @@
 }
 .card-link:hover {
   opacity: 0.1;
+  color: white;
 }
 
 #reviews {
@@ -55,7 +57,9 @@
   margin-top: 20px;
 }
 
-
+.card a {
+  color: white;
+}
 
 
 

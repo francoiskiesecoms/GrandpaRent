@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" style="min-height: calc(100vh - 126px);">
   <div class="profile text-center">
     <div class="card-grandparent-main">
       <div class="card-grandparent">
-          <img src="" class="img-circle">
+          <%= image_tag @grandparent.picture.url, class: "img-circle", style:"width: 120px;"  %>
           <h1><%= @grandparent.name %></h1>
           <h2><%=@grandparent.address%></h2>
           <p><%= @grandparent.speciality %></p>

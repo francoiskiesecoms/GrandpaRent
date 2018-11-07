@@ -7,7 +7,9 @@ class ProfilesController < ApplicationController
 
   def edit
 
+
   end
+
   def update
   # chope la forme du dashboard et update
   @user = current_user

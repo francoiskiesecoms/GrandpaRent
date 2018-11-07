@@ -1,13 +1,21 @@
-<h1> Modify my profile </h1>
-
-<%=  link_to "Go back home", grandparents_path  %>
+<div class="container" style="min-height: calc(100vh - 126px);">
 
 
-<%= simple_form_for(current_user) do |f| %>
-  <!-- [...] -->
-  <%= f.input :name %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit %>
-  <!-- [...] -->
-<% end %>
+
+      <h2> Modify my profile </h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset">
+          <%= simple_form_for(current_user) do |f| %>
+            <!-- [...] -->
+            <%= f.input :name %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.button :submit %>
+            <!-- [...] -->
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
