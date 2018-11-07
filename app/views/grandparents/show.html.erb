@@ -9,6 +9,8 @@
           <%= simple_form_for [@grandparent, @booking ] do |f| %>
             <!-- [...] -->
           <%= f.submit "Book!", class: "btn btn-primary" %>
+          <%= f.date_select :start_date %>
+          <%= f.date_select :end_date %>
             <!-- [...] -->
           <% end %>
       </div>
