@@ -12,12 +12,16 @@
   </head>
   <body>
 
-  <%= render "shared/navbar" %>
+    <%= render "shared/navbar" %>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/footer" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <!-- [...] -->
+    <!-- ADD THIS LINE 👇 -->
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js" %>
+    <%= javascript_pack_tag "map" %>
   </body>
 </html>
