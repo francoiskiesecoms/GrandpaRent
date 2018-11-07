@@ -1,5 +1,5 @@
 class Grandparent < ApplicationRecord
-  mount_uploader :photo, PhotoUploader
+  mount_uploader :picture, PictureUploader
   belongs_to :user
 
   has_many :bookings, dependent: :destroy
