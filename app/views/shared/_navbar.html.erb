@@ -7,9 +7,11 @@
   <!-- Right Navigation -->
   <div class="navbar-grandparents-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-grandparents-item navbar-grandparents-link">About</a>
-    <a href="" class="navbar-grandparents-item navbar-grandparents-link">Community</a>
-    <a href="" class="navbar-grandparents-item navbar-grandparents-link">Messages</a>
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-grandparents-item navbar-grandparents-link" %>
+    <% else %>
+       <%= link_to "Sign in", new_user_session_path, class: "navbar-grandparents-item navbar-grandparents-link"%>
+    <% end %>
 
 
     <!-- Profile picture with dropdown list -->
@@ -17,9 +19,9 @@
       <div class="dropdown">
         <img src="https://i.pinimg.com/474x/b9/6f/cf/b96fcf719498b98ce659375a6d502b82--happy-smile-happy-faces.jpg" class="avatar dropdown-toggle" id="navbar-grandparents-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-grandparents-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+
+          <li><%= link_to "My dashboard", profile_path, class: "navbar-grandparents-item navbar-grandparents-link" %></li>
+
         </ul>
       </div>
     </div>
