@@ -6,11 +6,7 @@
           <% if grandparent.photo.nil? %>
             <div class="card">
           <%else%>
-            <div class="card"
-  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path Grandparent.last.photo, height: 300, width: 400, crop: :fill %>')">
-
-
+            <div class="card">
           <%end%>
 
             <%= link_to 'showprofile_path(grandparent.user_id)' do %>
@@ -30,10 +26,12 @@
                 <% grandparent.bookings.each do |booking| %>
                     <% average += booking.review_rating/size unless booking.review_rating.nil?%>
                 <% end %>
-                <h6 id = "reviews"> <%= average.to_s %> </h6>
+                <div id = "reviews">
+                  <% average.times do |x| %>
+                    <i class="fas fa-star"></i>
+                  <%end%>
+                </div>
               </div>
-
-
             </div>
         </div>
       <%end%>
