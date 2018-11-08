@@ -34,6 +34,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def index
+    @grandparent = Grandparent.find(params[:grandparent_id])
+    @bookings = @grandparent.bookings
+  end
+
   private
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :review_rating, :review_content)
