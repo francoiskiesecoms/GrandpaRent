@@ -2,10 +2,14 @@
     <div class="banner-content">
       <h1>Looking for a grandparent to have fun with ?</h1>
       <p>Spending quality time with your elderly has never been easier ... Give it a try ! </p>
-      <div class="banner-search">
-        <input type="search" id="mySearch" name="zipcode"
-          placeholder="Search by city">
-        <button class="search_button" type="button">Go !</button>
+      <div class="form-inline">
+      <%= form_tag grandparents_path, method: :get do %>
+      <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find by city..."%>
+    <button class="btn btn-primary" type="button">Go !</button>
+    <% end %>
     </div>
   </div>
 </div>
