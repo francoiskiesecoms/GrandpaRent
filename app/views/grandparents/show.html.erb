@@ -2,7 +2,11 @@
   <div class="profile text-center">
     <div class="card-grandparent-main">
       <div class="card-grandparent">
+        <% if @grandparent.picture.url.nil? %>
+       <img src="http://a133.idata.over-blog.com/500x308/3/95/92/16/ronfleur/ronfleur/VIEUX-PAPI.jpg" alt="pp">
+        <% else %>
           <%= image_tag @grandparent.picture.url, class: "img-circle", style:"width: 120px;"  %>
+          <% end  %>
           <h1><%= @grandparent.name %></h1>
           <h2><%=@grandparent.address%></h2>
           <p><%= @grandparent.speciality %></p>
