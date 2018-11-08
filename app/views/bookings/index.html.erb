@@ -1,0 +1,23 @@
+<% if @bookings.all? do |booking| %>
+    <% booking.review_rating.nil? || booking.review_content.nil? %>
+    <%end%>
+    <h2> <%= @grandparent.name + " has no reviews yet"%></h2>
+  <%end%>
+
+<ul>
+<% @bookings.each do |booking| %>
+  <% unless (booking.review_rating.nil?) || (booking.review_content.nil?) %>
+    <li>
+      <div id = "reviews">
+        <% booking.review_rating.times do |x| %>
+          <i class="fas fa-star"></i>
+        <%end%>
+      </div>
+      <span><%=  booking.review_content %></span>
+    </li>
+  <%end%>
+<% end %>
+</ul>
+
+
+
