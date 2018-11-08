@@ -6,8 +6,11 @@
       <div class="profile text-center">
         <div class="main">
           <div class="main-content">
-
+            <% if current_user.photo.url.nil? %>
+            <img src="https://previews.123rf.com/images/courtyardpix/courtyardpix1108/courtyardpix110800021/10291319-portrait-d-un-jeune-homme-aux-cheveux-blonds-et-yeux-bleus-isol%C3%A9-sur-blanc.jpg" alt="user" :class= "img-circle", style= "height: 130px;" >
+            <% else %>
             <%= image_tag current_user.photo.url, :class=> "img-circle", style:"height: 130px;" %>
+            <% end %>
             <h2><%= current_user.name.capitalize %></h2>
 
             <%= link_to "Edit my profile", profile_edit_path, :class=>"btn btn-primary btn-lg"  %>
