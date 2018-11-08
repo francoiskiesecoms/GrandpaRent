@@ -1,42 +1,54 @@
-<%= render "shared/banner" %>
+<div class="form-inline">
+    <%= form_tag grandparents_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find by city..."%>
+    <button class="btn btn-primary" type="button">Go !</button>
+    <% end %>
+</div>
 <div class="flex">
   <div class="container">
     <div class="row">
-      <% @grandparents.each do |grandparent| %>
-        <div class="col-xs-12 col-sm-2 col-md-4">
-          <% if grandparent.picture.url %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= cl_image_path grandparent.picture.url, height: 300, width: 400, crop: :fill %>')">
-          <% else %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('https://cdn.someecards.com/posts/grandpa-grandson-birth-text-ok-pIq.png')">
-          <% end %>
-            <%= link_to 'showprofile_path(grandparent.user_id)' do %>
-              <div class = "avatar-card">
-                <% if grandparent.user.photo.nil? %>
-                  <!-- add photo avatar neutre -->
-                <%else%>
-                  <%= cl_image_tag grandparent.user.photo, height: 50, width: 50, height:50, crop: :thumb, gravity: :face, radius: :max, format: :png %>
-                <%end%>
-              </div>
-            <%end%>
-              <div class="card-category"> <%= grandparent.speciality%></div>
-              <div class="card-description">
-                <h2> <%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
-                <% average = 0 %>
-                <% size = grandparent.bookings.size %>
-                <% grandparent.bookings.each do |booking| %>
-                    <% average += booking.review_rating/size unless booking.review_rating.nil?%>
-                <% end %>
-                <div id = "reviews">
-                  <% average.times do |x| %>
-                    <i class="fas fa-star"></i>
+      <% if @grandparents.count != 0 %>
+        <% @grandparents.each do |grandparent| %>
+          <div class="col-xs-12 col-sm-2 col-md-4">
+            <% if grandparent.picture.url %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+             url('<%= cl_image_path grandparent.picture.url, height: 300, width: 400, crop: :fill %>')">
+            <% else %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+             url('https://cdn.someecards.com/posts/grandpa-grandson-birth-text-ok-pIq.png')">
+            <% end %>
+              <%= link_to 'showprofile_path(grandparent.user_id)' do %>
+                <div class = "avatar-card">
+                  <% if grandparent.user.photo.nil? %>
+                    <!-- add photo avatar neutre -->
+                  <%else%>
+                    <%= cl_image_tag grandparent.user.photo, height: 50, width: 50, height:50, crop: :thumb, gravity: :face, radius: :max, format: :png %>
                   <%end%>
+                </div>
+              <%end%>
+                <div class="card-category"> <%= grandparent.speciality%></div>
+                <div class="card-description">
+                  <h2> <%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
+                  <% average = 0 %>
+                  <% size = grandparent.bookings.size %>
+                  <% grandparent.bookings.each do |booking| %>
+                      <% average += booking.review_rating/size unless booking.review_rating.nil?%>
+                  <% end %>
+                  <div id = "reviews">
+                    <% average.times do |x| %>
+                      <i class="fas fa-star"></i>
+                    <%end%>
+                  </div>
                 </div>
               </div>
             </div>
-        </div>
-      <%end%>
+          <%end%>
+        <% else %>
+          <h3>Sorry, no results</h3>
+        <% end %>
     </div>
   </div>
   <div
@@ -47,4 +59,5 @@
   >
       <!-- gem map plus tard   -->
   </div>
+</div>
 </div>

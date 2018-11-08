@@ -1,6 +1,7 @@
 // Import page-specific CSS files here.
 @import "show";
 
+
 .flex {
   display: flex;
 }
@@ -12,7 +13,6 @@
 .map {
   flex: 0 0 450px;
 }
-
 
 .banner_wrapper {
   color: white;
@@ -45,4 +45,7 @@
 .search_button {
   background-color: #2F8FCB;
   color: white;
+}
+.form-inline {
+  font-weight: lighter;
 }

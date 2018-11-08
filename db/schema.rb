@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_11_07_141551) do
-=======
-ActiveRecord::Schema.define(version: 2018_11_07_160151) do
->>>>>>> df67fa4e88d4dd0621e939fd834ae26816872444
+ActiveRecord::Schema.define(version: 2018_11_08_115010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +37,11 @@ ActiveRecord::Schema.define(version: 2018_11_07_160151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
-<<<<<<< HEAD
     t.string "picture"
-=======
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.float "latitude"
     t.float "longitude"
->>>>>>> df67fa4e88d4dd0621e939fd834ae26816872444
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["user_id"], name: "index_grandparents_on_user_id"
   end
 
@@ -62,6 +55,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_160151) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "photo"
+    t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

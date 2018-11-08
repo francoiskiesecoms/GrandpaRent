@@ -1,8 +1,14 @@
-<%= simple_form_for [@grandparent, @booking] do |f| %>
-  <!-- [...] -->
-  <%= f.input :review_content %>
-  <%= f.input :review_rating %>
-  <%= f.submit "add a review", class: "btn btn-primary" %>
-  <!-- [...] -->
-<% end %>
+<div class="container" style="min-height: calc(100vh - 126px);">
+  <div class="container-wraper">
+    <div class="container-form">
+      <%= simple_form_for [@grandparent, @booking] do |f| %>
+        <!-- [...] -->
+        <%= f.input :review_content %>
+        <%= f.input :review_rating %>
+        <%= f.submit "Add your review ! ", class: "btn btn-primary" %>
+        <!-- [...] -->
+      <% end %>
+    </div>
+  </div>
+</div>
 

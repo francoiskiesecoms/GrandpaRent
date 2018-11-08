@@ -1,8 +1,16 @@
 class GrandparentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
+  def home
+    @disable_nav = true
+  end
+
   def index
-    @grandparents = Grandparent.all
+    if params[:query].present?
+      @grandparents = Grandparent.search_by_address(params[:query])
+    else
+      @grandparents = Grandparent.all
+    end
 
     @grandparentsmap = Grandparent.where.not(latitude: nil, longitude: nil)
 
@@ -12,6 +20,7 @@ class GrandparentsController < ApplicationController
         lng: gdp.longitude#,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
+
     end
   end
 
@@ -35,7 +44,13 @@ class GrandparentsController < ApplicationController
   def show
     @grandparent = Grandparent.find(params[:id])
     @booking = Booking.new
-
+    @markers =
+       [{
+        lat: @grandparent.latitude,
+        lng: @grandparent.longitude
+        #,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }]
   end
 
   def edit
