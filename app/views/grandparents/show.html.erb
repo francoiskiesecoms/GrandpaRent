@@ -11,20 +11,32 @@
           <h2><%=@grandparent.address%></h2>
           <p><%= @grandparent.speciality %></p>
 
-        <!-- can book only if grandparent is available  -->
+        <!-- créer un div séparer pour ca  -->
 
           <% if @grandparent.end_date < Date.today || @grandparent.end_date.nil? %>
             <p> <%= @grandparent.name + "is not available for rent" %></p>
           <%else%>
 
-            <%= simple_form_for [@grandparent, @booking ] do |f| %>
+            <%= form_for [@grandparent, @booking ] do |f| %>
               <!-- [...] -->
-            <%= f.submit "Book!", class: "btn btn-primary" %>
-            <%= f.date_select :start_date %>
-            <%= f.date_select :end_date %>
-              <!-- [...] -->
+
+              <div class="form-group">
+                <%= f.label :start_date %>
+                <%= f.text_field :start_date, :data => {:provide => "datepicker"} , class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :end_date %>
+                <%= f.text_field :end_date, :data => {:provide => "datepicker"}, class: 'form-control'  %>
+              </div>
+                <%= f.submit "Book!", class: "btn btn-primary" %>
             <% end %>
           <% end %>
+
+          <!-- fin du div  -->
+
+
+
       </div>
     </div>
     <div class="card-grandparent-reviews">
@@ -48,11 +60,11 @@
       <div class="card-grandparent">
         <h3> More about <%= @grandparent.name %></h3>
         <p> #rajouter une description pour le grandparent</p>
-
       </div>
     </div>
   </div>
 </div>
+
 <div
   id="map"
   style="width: 1063px; margin: auto;
@@ -61,3 +73,4 @@
 >
     <!-- gem map plus tard   -->
 </div>
+
