@@ -61,7 +61,7 @@
   font-size: 19px;
 }
 .description h3 {
-  color: rgba(0,0,0,0.9);
+  color: #37B686;;
   font-size: 21px;
   font-weight: normal;
 }
@@ -78,9 +78,9 @@
 //   padding: 30px 0;
 // }
 
-// .paddingform {
-//   padding: 0 130px;
-// }
+.paddingform {
+  margin-left: 51px;
+}
 
 // .margin-right {
 //   margin-right: 20px;
@@ -101,6 +101,7 @@
     text-align: center;
     padding: 30px;
     width: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 
 }
 #second {
@@ -109,8 +110,10 @@
     text-align: center;
     padding: 30px;
     width: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.margincardprofile {
-  margin:10px;
-}
+// .margincardprofile {
+//   margin:10px;
+// }
+
