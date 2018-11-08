@@ -17,9 +17,13 @@
     </div>
     <div class="card-grandparent-reviews">
       <div class="card-grandparent">
-        <h3> <%= @grandparent.bookings.count%></h3>
+        <% count = 0 %>
+        <% @grandparent.bookings.each do |booking| %>
+          <% count += 1 unless booking.review_rating.nil? %>
+        <% end %>
+        <h3> <%= count %> </h3>
         <p> reviews </p>
-        <%= link_to "Check it out", grandparent_booking_path(@grandparent) %>
+      <%= link_to "Check it out", grandparent_bookings_path(@grandparent) %>
       </div>
     </div>
     <div class="card-grandparent-bookings">

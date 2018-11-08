@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_07_141551) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_07_160151) do
+>>>>>>> df67fa4e88d4dd0621e939fd834ae26816872444
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +41,14 @@ ActiveRecord::Schema.define(version: 2018_11_07_141551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+<<<<<<< HEAD
     t.string "picture"
+=======
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.float "latitude"
+    t.float "longitude"
+>>>>>>> df67fa4e88d4dd0621e939fd834ae26816872444
     t.index ["user_id"], name: "index_grandparents_on_user_id"
   end
 

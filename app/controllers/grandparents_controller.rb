@@ -1,8 +1,18 @@
 class GrandparentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+
   def index
     @grandparents = Grandparent.all
 
+    @grandparentsmap = Grandparent.where.not(latitude: nil, longitude: nil)
+
+    @markers = @grandparentsmap.map do |gdp|
+      {
+        lat: gdp.latitude,
+        lng: gdp.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def new

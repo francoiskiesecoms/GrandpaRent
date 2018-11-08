@@ -39,7 +39,12 @@
       <%end%>
     </div>
   </div>
-  <div class="map" style = "background-color: red">
+  <div
+    id="map"
+    style="width: 50%;
+    height: auto;"
+    data-markers="<%= @markers.to_json %>"
+  >
       <!-- gem map plus tard   -->
   </div>
 </div>
