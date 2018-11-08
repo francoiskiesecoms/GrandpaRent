@@ -8,14 +8,13 @@ class ProfilesController < ApplicationController
   def edit
 
 
-
-
   end
 
   def update
   # chope la forme du dashboard et update
   @user = current_user
   @user.update(user_params)
+  redirect_to profile_path
   end
 
   def show
@@ -24,7 +23,7 @@ class ProfilesController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :photo)
+    params.require(:user).permit(:name, :photo, :description)
   end
 end
 

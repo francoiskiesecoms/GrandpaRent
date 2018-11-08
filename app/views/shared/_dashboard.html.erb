@@ -7,6 +7,7 @@
         <div class="main">
           <div class="main-content">
 
+            <%= image_tag current_user.photo.url, :class=> "img-circle", style:"height: 130px;" %>
             <h2><%= current_user.name.capitalize %></h2>
 
             <%= link_to "Edit my profile", profile_edit_path, :class=>"btn btn-primary btn-lg"  %>
@@ -14,8 +15,8 @@
         </div>
         <div class="stat">
           <div class="stat-content">
-            <h3>3,536</h3>
-            <p>contributions</p>
+            <h3>E-mail</h3>
+            <p><%= current_user.email %></p>
           </div>
         </div>
         <div class="stat">
@@ -32,9 +33,13 @@
           </div>
         <div class="description">
           <div class="description-content">
-            <h3>More about <%= current_user.name%></h3>
+            <h3>More about</h3>
             <p class="text-justify">
-              I am a full-stack developer with 9 years of experience working in startups. Scratching your own itch? Working on a startup project? Lots of ideas but frustrated that you can't code them?
+              <% if current_user.description.nil? %>
+                <p>No description yet</p>
+              <%else%>
+                <%= current_user.description %>
+              <%end%>
             </p>
           </div>
         </div>
