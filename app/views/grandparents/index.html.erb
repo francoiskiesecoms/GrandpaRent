@@ -1,4 +1,12 @@
-
+<div class="form-inline">
+    <%= form_tag grandparents_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find by city..."%>
+    <button class="btn btn-primary" type="button">Go !</button>
+    <% end %>
+</div>
 <div class="flex">
   <div class="container">
     <div class="row">

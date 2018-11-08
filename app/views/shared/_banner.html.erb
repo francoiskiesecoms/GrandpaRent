@@ -12,14 +12,6 @@
   <div class="banner-content">
     <h1>Looking for a grandparent to have fun with ?</h1>
     <p>Spending quality time with your elderly has never been easier ... Give it a try ! </p>
-    <div class="form-inline">
-    <%= form_tag grandparents_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find by city..."%>
-    <button class="btn btn-primary" type="button">Go !</button>
-    <% end %>
-    </div>
+    <%= link_to "Go to the website !", grandparents_path %>
   </div>
 </div>
