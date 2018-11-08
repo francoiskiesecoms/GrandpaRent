@@ -6,14 +6,19 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     valid_dates = (@booking.start_date >= @grandparent.start_date) && (@booking.end_date <= @grandparent.end_date)
     availability = @grandparent.bookings.all? do |booking|
-      (@booking.end_date < booking.start_date) && (@booking.end_date > booking.end_date) && (@booking.start_date < booking.start_date) && (@booking.start_date > booking.end_date)
+      (@booking.start_date < booking.start_date && @booking.end_date < booking.start_date) || (@booking.start_date > booking.end_date && @booking.end_date > booking.end_date)
     end
 
     if valid_dates && availability
       @booking.save
+      flash[:alert] = "Congrats for your booking!!!"
       redirect_to grandparent_path(@grandparent)
-    else
-
+    elsif !(valid_dates)
+      flash[:alert] = "Not for rent at this time!!"
+      redirect_to grandparent_path(@grandparent)
+    elsif !(availability)
+      flash[:alert] = "Already booked at that time!!"
+      redirect_to grandparent_path(@grandparent)
     end
 
   end

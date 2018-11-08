@@ -6,12 +6,20 @@
           <h1><%= @grandparent.name %></h1>
           <h2><%=@grandparent.address%></h2>
           <p><%= @grandparent.speciality %></p>
-          <%= simple_form_for [@grandparent, @booking ] do |f| %>
-            <!-- [...] -->
-          <%= f.submit "Book!", class: "btn btn-primary" %>
-          <%= f.date_select :start_date %>
-          <%= f.date_select :end_date %>
-            <!-- [...] -->
+
+        <!-- can book only if grandparent is available  -->
+
+          <% if @grandparent.end_date < Date.today || @grandparent.end_date.nil? %>
+            <p> <%= @grandparent.name + "is not available for rent" %></p>
+          <%else%>
+
+            <%= simple_form_for [@grandparent, @booking ] do |f| %>
+              <!-- [...] -->
+            <%= f.submit "Book!", class: "btn btn-primary" %>
+            <%= f.date_select :start_date %>
+            <%= f.date_select :end_date %>
+              <!-- [...] -->
+            <% end %>
           <% end %>
       </div>
     </div>

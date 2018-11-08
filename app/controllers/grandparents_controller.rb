@@ -38,6 +38,21 @@ class GrandparentsController < ApplicationController
 
   end
 
+  def edit
+    @grandparent = Grandparent.find(params[:id])
+
+  end
+
+  def update
+    @grandparent = Grandparent.find(params[:id])
+    @grandparent.update(grandparent_params)
+    if @grandparent.save
+      redirect_to profile_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @grandparent = Grandparent.find(params[:id])
     @grandparent.destroy
