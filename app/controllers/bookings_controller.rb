@@ -1,7 +1,12 @@
+
+
 class BookingsController < ApplicationController
   def create
+
     @grandparent = Grandparent.find(params[:grandparent_id])
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
+    @booking.start_date = convert_to(booking_params[:start_date])
+    @booking.end_date = convert_to(booking_params[:end_date])
     @booking.grandparent = @grandparent
     @booking.user = current_user
     valid_dates = (@booking.start_date >= @grandparent.start_date) && (@booking.end_date <= @grandparent.end_date)
@@ -45,6 +50,12 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def convert_to(date_string)
+    parsed = Date.strptime(date_string, "%m/%d/%Y")
+    parsed
+  end
+
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :review_rating, :review_content)
   end
