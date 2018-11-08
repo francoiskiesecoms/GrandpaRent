@@ -1,0 +1,36 @@
+.user-review {
+  display: flex;
+  justify-content: space-around;
+  vertical-align: center;
+  padding: 20px;
+  border: 1px solid rgba(220,224,244,0.8);
+}
+.review:last-child {
+  border-bottom: none;
+}
+.avatar-review {
+  border-radius: 50%;
+}
+
+.review-name {
+  align-items: center;
+  padding-left: 10px;
+  min-width: 100px;
+}
+.review-name h3 {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.review-body {
+  padding-left: 10px;
+  font-size: 20px;
+  color: rgba(0,0,0,0.7);
+}
+.review-body {
+  padding-left: 20px;
+
+}
+.review-body p {
+  margin: 6px 0;
+}
