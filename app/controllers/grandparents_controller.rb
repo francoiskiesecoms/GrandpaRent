@@ -2,7 +2,11 @@ class GrandparentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @grandparents = Grandparent.all
+    if params[:query].present?
+      @grandparents = Grandparent.search_by_address(params[:query])
+    else
+      @grandparents = Grandparent.all
+    end
 
     @grandparentsmap = Grandparent.where.not(latitude: nil, longitude: nil)
 
