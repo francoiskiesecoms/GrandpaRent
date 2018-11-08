@@ -14,10 +14,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :edit, :update, :index]
 
   end
-  root to: 'grandparents#index'
-
-
-
+  root to: 'grandparents#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

@@ -1,6 +1,10 @@
 class GrandparentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
+  def home
+    @disable_nav = true
+  end
+
   def index
     if params[:query].present?
       @grandparents = Grandparent.search_by_address(params[:query])
