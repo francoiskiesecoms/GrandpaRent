@@ -1,23 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 <% if @bookings.all? do |booking| %>
     <% booking.review_rating.nil? || booking.review_content.nil? %>
     <%end%>
     <h2> <%= @grandparent.name + " has no reviews yet"%></h2>
   <%end%>
 
-<ul>
+<ul class="list-unstyled">
 <% @bookings.each do |booking| %>
   <% unless (booking.review_rating.nil?) || (booking.review_content.nil?) %>
     <li>
-      <div id = "reviews">
-        <% booking.review_rating.times do |x| %>
-          <i class="fas fa-star"></i>
-        <%end%>
+      <div class="user-review">
+        <div class = "avatar-review">
+          <% if booking.user.photo.nil? %>
+            <img src="https://static.tayyar.org/Content/ResizedImages/663/423/outside/151202075254815~unknown.jpg" alt="pp">
+          <%else%>
+            <%= cl_image_tag booking.user.photo, height: 50, width: 50, height:50, crop: :thumb, gravity: :face, radius: :max, format: :png %>
+          <%end%>
+        </div>
+        <div class="review-name">
+          <h3><%= booking.user.name %>'s review </h3>
+        </div>
+        <div class="review-body">
+          <p> <%= booking.review_content %></p>
+          <p> <% booking.review_rating.times do |x| %>
+            <i class="fas fa-star"></i>
+            <%end%>
+          </p>
+        </div>
       </div>
-      <span><%=  booking.review_content %></span>
     </li>
   <%end%>
-<% end %>
 </ul>
+<% end %>
+</div>
+</div>
+</div>
 
 
 
