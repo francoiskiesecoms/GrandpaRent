@@ -1,0 +1,21 @@
+
+
+<h2> <%= "Edit " + @grandparent.name %> </h2>
+<%= simple_form_for(@grandparent) do |f| %>
+<!-- [...] -->
+  <%= f.input :age %>
+  <%= f.input :address %>
+  <%= f.input :speciality %>
+  <%= f.input :picture %>
+  <%= f.input :picture_cache, as: :hidden %>
+  <%= f.button :submit %>
+<% end %>
+
+<h2> <%= "Edit availibility of " + @grandparent.name %></h2>
+
+<%= simple_form_for(@grandparent) do |f| %>
+<!-- [...] -->
+  <%= f.date_select :start_date %>
+  <%= f.date_select :end_date %>
+  <%= f.button :submit %>
+<% end %>
