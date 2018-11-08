@@ -17,9 +17,9 @@
       <%= f.input :speciality %>
       <%= f.input :picture %>
       <%= f.input :picture_cache, as: :hidden %>
-      <%= f.date_select :start_date %>
+      <%= f.date_select :start_date %><br>
       <%= f.date_select :end_date %>
-      <%= f.button :submit %>
+      <%= f.button :submit, :class=>"btn btn-primary", style:"background: #37B686;margin-top: 5px;" %>
       <% end %>
     </div>
     <div class="margin-right">
@@ -30,16 +30,18 @@
               <div class="col-md-3">
                 <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.picture, height: 300, width: 400, crop: :fill %>');">
                   <div class="card-category"> </div>
-                  <div class="card-description">
-                <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
+                    <div class="card-description">
+                      <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
+                    </div>
+                  <div class = "avatar-card">
+                   <%= link_to showprofile_path(grandparent.user) do %><i class="fas fa-cross"></i><%end%>
+                     <%= link_to grandparent_path(grandparent),
+                     data: { confirm: 'Are you sure?' }, method: :delete, remote: true do %><i class="fas fa-trash-alt"></i><% end %>
+                    <%= link_to edit_grandparent_path(grandparent) do %><i class="fas fa-edit"></i><%end%>
+                  </div>
+                </div>
               </div>
-               <%= link_to "Owner", showprofile_path(grandparent.user) %>
-                 <%= link_to "Destroy",  grandparent_path(grandparent),
-                 data: { confirm: 'Are you sure?' }, method: :delete %>
-                <%= link_to "Edit availibility", edit_grandparent_path(grandparent) %>
-              </div>
-              </div>
-          <% end %>
+            <% end %>
           <% end %>
       </div>
     </div>
@@ -50,7 +52,7 @@
 <div class="container">
   <div id="row">
     <div class="col-md-4", style="    margin-left: 52px; margin-right: 3px; margin-top: 20px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);min-height: 200px;">
-      <h1>My bookings</h1>
+      <h1 style="text-align: center;">My bookings</h1>
       <ul>
         <% current_user.bookings.each do |booking| %>
           <li> <%= Grandparent.find(booking.grandparent_id).name %> ---
@@ -64,7 +66,7 @@
       </ul>
     </div>
     <div class="col-md-4", style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);margin-top: 20px; margin-left: 17px; min-width: 658px;min-height: 200px;">
-      <h1>History of bookings</h1>
+      <h1 style="text-align: center">History of bookings</h1>
       <% current_user.grandparents.each do |grandparent| %>
         <% if grandparent.start_date.nil? %>
           <p>No bookings</p>
