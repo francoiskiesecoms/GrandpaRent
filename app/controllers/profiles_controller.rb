@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
   # chope la forme du dashboard et update
   @user = current_user
   @user.update(user_params)
-  redirect_to profile_path
+  redirect_to profile_path(@user)
   end
 
   def show

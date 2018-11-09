@@ -11,9 +11,9 @@
 
         <% if @user == current_user %>
           <%= link_to "Edit my profile", edit_profile_path(@user), :class=>"btn btn-primary btn-lg"  %>
-          <%= link_to "My grandparents", new_grandparent_path, :class=>"btn btn-primary btn-lg"  %>
+          <%= link_to "My grandparents", someonepa_path(@user), :class=>"btn btn-primary btn-lg"  %>
         <%else%>
-          <%= link_to "Check all #{@user.name}'s grandparents", new_grandparent_path, :class=>"btn btn-primary btn-lg"  %>
+          <%= link_to "Check all #{@user.name}'s grandparents", someonepa_path(@user), :class=>"btn btn-primary btn-lg"  %>
         <% end %>
       </div>
     </div>

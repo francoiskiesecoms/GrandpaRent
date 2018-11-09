@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
 
-  get 'profiles/:id/grandparents', to: 'grandparents#someone_grandparents'
+  get 'profiles/:id/grandparents', to: 'grandparents#someone_grandparents', as: :someonepa
 
   patch '/user', to: 'profiles#update'
   # resources :users, only: [:show, :edit, :update]

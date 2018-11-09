@@ -41,7 +41,7 @@ class GrandparentsController < ApplicationController
 
     if @grandparent.save
       flash[:success] = "Content Successfully Created"
-      redirect_to new_grandparent_path
+      redirect_to someonepa_path(current_user)
     else
       render 'new'
     end
