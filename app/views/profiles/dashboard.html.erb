@@ -1,51 +1,56 @@
-
-
-
-<%= render "shared/dashboard" %>
-
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 paddingform ">
+  <div class="profile text-center">
+    <div class="main">
+      <div class="main-content">
+        <% if current_user.photo.url.nil? %>
+        <img src="https://previews.123rf.com/images/courtyardpix/courtyardpix1108/courtyardpix110800021/10291319-portrait-d-un-jeune-homme-aux-cheveux-blonds-et-yeux-bleus-isol%C3%A9-sur-blanc.jpg" alt="user" :class= "img-circle", style= "height: 130px;" >
+        <% else %>
+        <%= image_tag current_user.photo.url, :class=> "img-circle", style:"height: 130px;" %>
+        <% end %>
+        <h2><%= current_user.name.capitalize %></h2>
 
-      <h2 style="text-align: center"> Add a grand parent </h2>
+        <%= link_to "Edit my profile", profile_edit_path, :class=>"btn btn-primary btn-lg"  %>
 
-      <%= simple_form_for(@grandparent) do |f| %>
-      <!-- [...] -->
-      <%= f.input :name %>
-      <%= f.input :age %>
-      <%= f.input :address %>
-      <%= f.input :speciality %>
-      <%= f.input :picture %>
-      <%= f.input :picture_cache, as: :hidden %>
-      <%= f.button :submit, :class=>"btn btn-primary", style:"background: #37B686;margin-top: 5px;" %>
-      <% end %>
+         <%= link_to "My grandparents", new_grandparent_path, :class=>"btn btn-primary btn-lg"  %>
+      </div>
     </div>
-    <div class="margin-right">
-      <h2 style="text-align: center;padding-bottom: 19px;">Grandparents created</h2>
-        <div style="margin-left: -251px;">
-          <% current_user.grandparents.each do |grandparent| %>
-            <% if grandparent.picture.url %>
-              <div class="col-md-3">
-                <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.picture, height: 300, width: 400, crop: :fill %>');">
-                  <div class="card-category"> </div>
-                    <div class="card-description">
-                      <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
-                    </div>
-                  <div class = "avatar-card">
-                   <%= link_to showprofile_path(grandparent.user) do %><i class="fas fa-cross"></i><%end%>
-                     <%= link_to grandparent_path(grandparent),
-                     data: { confirm: 'Are you sure?' }, method: :delete, remote: true do %><i class="fas fa-trash-alt"></i><% end %>
-                    <%= link_to edit_grandparent_path(grandparent) do %><i class="fas fa-edit"></i><%end%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+    <div class="stat">
+      <div class="stat-content">
+        <h3>E-mail</h3>
+        <p><%= current_user.email %></p>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-content">
+        <h3><%= current_user.bookings.size%></h3>
+        <p><%= "people rented your grandparents " + current_user.bookings.size.to_s + " times" %></p>
+      </div>
+      </div>
+    <div class="stat">
+      <div class="stat-content">
+
+        <h3><%= current_user.booked%></h3>
+        <p>experiences booked</p>
+      </div>
+      </div>
+    <div class="description">
+      <div class="description-content">
+        <h3>More about</h3>
+        <p class="text-justify">
+          <% if current_user.description.nil? %>
+            <p>No description yet</p>
+          <%else%>
+            <%= current_user.description %>
+          <%end%>
+        </p>
       </div>
     </div>
   </div>
-
 </div>
+
+
+  <!-- to move to new page  -->
+
 
 <div class="container">
   <div id="row">
