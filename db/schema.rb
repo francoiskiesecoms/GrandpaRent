@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 2018_11_08_115010) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.text "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["user_id"], name: "index_grandparents_on_user_id"
   end
 
