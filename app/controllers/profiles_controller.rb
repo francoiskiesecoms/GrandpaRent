@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def dashboard
-    @grandparent = Grandparent.new
+
   end
   # dashboard c'est l'équivalent de edit, le mec peut modifier ses infos
 
@@ -20,6 +20,7 @@ class ProfilesController < ApplicationController
   def show
   @user = User.find(params[:id])
   end
+
 
   private
   def user_params
