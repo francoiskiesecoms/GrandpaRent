@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 
-  def dashboard
+  def someone_bookings
+
+    @user = User.find(params[:id])
 
   end
   # dashboard c'est l'équivalent de edit, le mec peut modifier ses infos
@@ -18,7 +20,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-  @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 

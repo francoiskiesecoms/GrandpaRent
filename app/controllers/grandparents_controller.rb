@@ -38,6 +38,11 @@ class GrandparentsController < ApplicationController
   def create
     @grandparent = Grandparent.new(grandparent_params)
     @grandparent.user = current_user
+    if grandparent_params(params[:photo]).nil?
+      @grandparent.photo =
+
+    end
+
 
     if @grandparent.save
       flash[:success] = "Content Successfully Created"
