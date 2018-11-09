@@ -8,5 +8,20 @@
 
 
 
-Grandparent.create(name: "Francois", age: 90, address: "Be central", speciality: "Mongol").save
-Grandparent.create(name: "Romane", age: 110, address: "Be central", speciality: "Belly dancer").save
+require "open-uri"
+require "yaml"
+
+file = Rails.root.join('db', 'seeds', 'grandparents.yml')
+sample = YAML.load(open(file).read)
+
+puts 'Creating user...'
+users = {}
+sample["users"].each do |user|
+  users[user["slug"]] = User.create! user.slice("name", "email", "photo", "description", "password", "password_confirmation")
+end
+
+puts 'Creating grandparents...'
+sample["grandparents"].each do |grandparent|
+  user = users[grandparent["user_slug"]]
+  Grandparent.create! grandparent.slice("name", "age", "address", "specialty", "description", "picture", "latitude", "longitude", "start_date", "end_date").merge(user: user)
+end
