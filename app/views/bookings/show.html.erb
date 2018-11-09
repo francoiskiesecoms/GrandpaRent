@@ -1,1 +1,30 @@
-show.html.erb
+<div class="container">
+  <div id="row">
+    <div class="col-md-4", style="    margin-left: 52px; margin-right: 3px; margin-top: 20px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);min-height: 200px;">
+      <h1 style="text-align: center;">My bookings</h1>
+      <ul>
+        <% @user.bookings.each do |booking| %>
+          <li> <%= Grandparent.find(booking.grandparent_id).name %> ---
+            <% if (booking.review_content.nil?) && (booking.review_rating.nil?) %>
+              <%= link_to "Add a review", edit_grandparent_booking_path(booking.grandparent, booking)%>
+            <% else %>
+              <%= "Reviewed"%>
+            <% end %>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+    <div class="col-md-4", style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);margin-top: 20px; margin-left: 17px; min-width: 658px;min-height: 200px;">
+      <h1 style="text-align: center">History of bookings</h1>
+      <% c@usergrandparents.each do |grandparent| %>
+        <% if grandparent.start_date.nil? %>
+          <p>No bookings</p>
+        <%else%>
+          <% grandparent.bookings.each do |booking| %>
+            <li><%= grandparent.name + " has been booked from " + booking.start_date.time.to_s + " by " +  grandparent.user.name + " to " + booking.end_date.time.to_s %></li>
+          <%end%>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+</div>
