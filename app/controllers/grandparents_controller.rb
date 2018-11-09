@@ -48,6 +48,7 @@ class GrandparentsController < ApplicationController
   end
 
   def show
+
     @grandparent = Grandparent.find(params[:id])
     @booking = Booking.new
     @markers =

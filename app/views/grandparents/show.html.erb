@@ -12,30 +12,23 @@
           <p><%= @grandparent.speciality %></p>
 
 
-
-          <% if @grandparent.start_date  || @grandparent.end_date.nil? %>
+          <% if @grandparent.start_date.nil?  || @grandparent.end_date.nil? %>
             <p> <%= @grandparent.name + "is not available for rent" %></p>
           <%else%>
 
             <%= form_for [@grandparent, @booking ] do |f| %>
+                <div class="form-group">
+                  <%= f.label :start_date %>
+                  <%= f.text_field :start_date, :data => {:provide => "datepicker"} , class: 'form-control' %>
+                </div>
 
-
-              <div class="form-group">
-                <%= f.label :start_date %>
-                <%= f.text_field :start_date, :data => {:provide => "datepicker"} , class: 'form-control' %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :end_date %>
-                <%= f.text_field :end_date, :data => {:provide => "datepicker"}, class: 'form-control'  %>
-              </div>
-                <%= f.submit "Book!", class: "btn btn-primary" %>
+                <div class="form-group">
+                  <%= f.label :end_date %>
+                  <%= f.text_field :end_date, :data => {:provide => "datepicker"}, class: 'form-control'  %>
+                </div>
+                  <%= f.submit "Book!", class: "btn btn-primary" %>
+              <% end %>
             <% end %>
-          <% end %>
-
-
-
-
 
       </div>
     </div>
