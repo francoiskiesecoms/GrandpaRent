@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
     if @booking.save
-      redirect_to profile_path
+      redirect_to someonebo_path(@grandparent.user)
     else
       render :edit
     end

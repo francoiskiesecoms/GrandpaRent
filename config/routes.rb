@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   resources :profiles do
-    resources :bookings, only: [:show]
+
   end
 
 
   get 'profiles/:id/grandparents', to: 'grandparents#someone_grandparents', as: :someonepa
+  get 'profiles/:id/bookings', to: 'profiles#someone_bookings', as: :someonebo
 
   patch '/user', to: 'profiles#update'
   # resources :users, only: [:show, :edit, :update]

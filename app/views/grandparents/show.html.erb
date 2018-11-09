@@ -13,7 +13,7 @@
 
         <!-- créer un div séparer pour ca  -->
 
-          <% if @grandparent.end_date < Date.today || @grandparent.end_date.nil? %>
+          <% if @grandparent.start_date  || @grandparent.end_date.nil? %>
             <p> <%= @grandparent.name + "is not available for rent" %></p>
           <%else%>
 
