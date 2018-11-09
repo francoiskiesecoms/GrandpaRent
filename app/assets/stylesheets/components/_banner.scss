@@ -6,10 +6,9 @@
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  position:absolute;
-  z-index:1 !important;
+  z-index:1;
   min-width:100%;
   min-height:100%;
   }
@@ -51,3 +50,7 @@
   font-weight: lighter;
 }
 
+.banner-content {
+  top: 200px;
+  z-index: 3 !important;
+}
