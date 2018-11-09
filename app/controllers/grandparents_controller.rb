@@ -24,6 +24,12 @@ class GrandparentsController < ApplicationController
     end
   end
 
+  def someone_grandparents
+    @user = User.find(params[:id])
+    @grandparent = Grandparent.new
+    @grandparents = @user.grandparents
+  end
+
   def new
     @grandparent = Grandparent.new
   end

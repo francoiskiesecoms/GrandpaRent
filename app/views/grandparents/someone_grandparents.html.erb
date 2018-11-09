@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+
+    <% if @user == current_user %>
+      <div class="col-md-4 paddingform ">
+
+        <h2 style="text-align: center"> Add a grand parent </h2>
+
+        <%= simple_form_for(@grandparent) do |f| %>
+        <!-- [...] -->
+        <%= f.input :name %>
+        <%= f.input :age %>
+        <%= f.input :address %>
+        <%= f.input :speciality %>
+        <%= f.input :picture %>
+        <%= f.input :picture_cache, as: :hidden %>
+        <%= f.button :submit, :class=>"btn btn-primary", style:"background: #37B686;margin-top: 5px;" %>
+        <% end %>
+      </div>
+    <%end%>
+
+
+    <div class="margin-right">
+      <h2 style="text-align: center;padding-bottom: 19px;"><%= "#{@user.name}'s grandparents"%></h2>
+        <div style="margin-left: -251px;">
+          <% @user.grandparents.each do |grandparent| %>
+            <% if grandparent.picture.url %>
+              <div class="col-md-3">
+                <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path grandparent.picture, height: 300, width: 400, crop: :fill %>');">
+                  <div class="card-category"> </div>
+                    <div class="card-description">
+                      <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
+                    </div>
+                  <div class = "avatar-card">
+                   <%= link_to profile_path(grandparent.user) do %><i class="fas fa-cross"></i><%end%>
+                     <%= link_to grandparent_path(grandparent),
+                     data: { confirm: 'Are you sure?' }, method: :delete, remote: true do %><i class="fas fa-trash-alt"></i><% end %>
+                    <%= link_to edit_grandparent_path(grandparent) do %><i class="fas fa-edit"></i><%end%>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
