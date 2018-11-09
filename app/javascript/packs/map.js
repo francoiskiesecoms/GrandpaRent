@@ -20,7 +20,7 @@ import { autocomplete } from '../components/autocomplete';
 // [...]
 autocomplete();
 
-// import { autocompletesearch } from '../components/autocompletesearch';
+import { autocompletesearch } from '../components/autocompletesearch';
 
-// // [...]
-// autocompletesearch();
+// [...]
+autocompletesearch();
