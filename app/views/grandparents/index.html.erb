@@ -1,14 +1,16 @@
-<div class="form-inline">
-    <%= form_tag grandparents_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find by city..."%>
-    <button class="btn btn-primary" type="button">Go !</button>
-    <% end %>
-</div>
+
 <div class="flex">
   <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <%= form_tag grandparents_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Look for a grandparent by city and type enter..."%>
+        <% end %>
+      </div>
+    </div>
     <div class="row">
       <% if @grandparents.count != 0 %>
         <% @grandparents.each do |grandparent| %>
