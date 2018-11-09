@@ -20,7 +20,7 @@
               <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
              url('https://cdn.someecards.com/posts/grandpa-grandson-birth-text-ok-pIq.png')">
             <% end %>
-              <%= link_to 'showprofile_path(grandparent.user_id)' do %>
+              <%= link_to profile_path(grandparent.user) do %>
                 <div class = "avatar-card">
                   <% if grandparent.user.photo.nil? %>
                     <!-- add photo avatar neutre -->

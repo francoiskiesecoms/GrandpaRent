@@ -49,6 +49,10 @@ class BookingsController < ApplicationController
     @bookings = @grandparent.bookings
   end
 
+  def show
+    @user = User.find(params[:user_id])
+  end
+
   private
 
   def convert_to(date_string)

@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'reviews/new'
-  get 'reviews/create'
-  get '/profile', to: 'profiles#dashboard'
-  get '/profile/edit', to: 'profiles#edit'
-  get '/profile/:id', to: 'profiles#show', as: :showprofile
-
+  resources :profiles do
+    resources :bookings, only: [:show]
+  end
 
 
   patch '/user', to: 'profiles#update'

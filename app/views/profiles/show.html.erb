@@ -1,4 +1,60 @@
-<h1>Info about <%= @user.email%></h1>
+<div class="container">
+  <div class="profile text-center">
+    <div class="main">
+      <div class="main-content">
+        <% if @user.photo.url.nil? %>
+        <img src="https://previews.123rf.com/images/courtyardpix/courtyardpix1108/courtyardpix110800021/10291319-portrait-d-un-jeune-homme-aux-cheveux-blonds-et-yeux-bleus-isol%C3%A9-sur-blanc.jpg" alt="user" :class= "img-circle", style= "height: 130px;" >
+        <% else %>
+        <%= image_tag @user.photo.url, :class=> "img-circle", style:"height: 130px;" %>
+        <% end %>
+        <h2><%= @user.name.capitalize %></h2>
+
+        <%= link_to "Edit my profile", edit_profile_path(@user), :class=>"btn btn-primary btn-lg"  %>
+
+         <%= link_to "My grandparents", new_grandparent_path, :class=>"btn btn-primary btn-lg"  %>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-content">
+        <h3>E-mail</h3>
+        <p><%= @user.email %></p>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-content">
+        <h3><%= @user.bookings.size%></h3>
+        <p><%= "people rented your grandparents " + @user.bookings.size.to_s + " times" %></p>
+      </div>
+      </div>
+    <div class="stat">
+      <div class="stat-content">
+
+        <h3><%= @user.booked%></h3>
+        <p>experiences booked</p>
+      </div>
+      </div>
+    <div class="description">
+      <div class="description-content">
+        <h3>More about</h3>
+        <p class="text-justify">
+          <% if @user.description.nil? %>
+            <p>No description yet</p>
+          <%else%>
+            <%= @user.description %>
+          <%end%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- to move to new page  -->
+
+
+
+
+
 
 
 

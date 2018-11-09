@@ -27,7 +27,7 @@
                       <h2><%= link_to grandparent.name, grandparent_path(grandparent) %></h2>
                     </div>
                   <div class = "avatar-card">
-                   <%= link_to showprofile_path(grandparent.user) do %><i class="fas fa-cross"></i><%end%>
+                   <%= link_to profile_path(grandparent.user) do %><i class="fas fa-cross"></i><%end%>
                      <%= link_to grandparent_path(grandparent),
                      data: { confirm: 'Are you sure?' }, method: :delete, remote: true do %><i class="fas fa-trash-alt"></i><% end %>
                     <%= link_to edit_grandparent_path(grandparent) do %><i class="fas fa-edit"></i><%end%>
