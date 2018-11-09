@@ -61,6 +61,15 @@ class GrandparentsController < ApplicationController
   def update
     @grandparent = Grandparent.find(params[:id])
     @grandparent.update(grandparent_params)
+
+    unless grandparent_params[:start_date].nil?
+      @grandparent.start_date = convert_to(grandparent_params[:start_date])
+    end
+
+    unless grandparent_params[:end_date].nil?
+      @grandparent.end_date = convert_to(grandparent_params[:end_date])
+    end
+
     if @grandparent.save
       redirect_to profile_path
     else
@@ -74,6 +83,12 @@ class GrandparentsController < ApplicationController
     redirect_to profile_path
   end
   private
+
+  def convert_to(date_string)
+    parsed = Date.strptime(date_string, "%m/%d/%Y")
+    parsed
+  end
+
   def grandparent_params
     params.require(:grandparent).permit(:name, :age, :address, :speciality, :user_id, :picture, :picture_cache, :start_date, :end_date)
   end
