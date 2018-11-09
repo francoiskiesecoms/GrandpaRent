@@ -11,14 +11,14 @@
           <h2><%=@grandparent.address%></h2>
           <p><%= @grandparent.speciality %></p>
 
-        <!-- créer un div séparer pour ca  -->
+
 
           <% if @grandparent.start_date  || @grandparent.end_date.nil? %>
             <p> <%= @grandparent.name + "is not available for rent" %></p>
           <%else%>
 
             <%= form_for [@grandparent, @booking ] do |f| %>
-              <!-- [...] -->
+
 
               <div class="form-group">
                 <%= f.label :start_date %>
@@ -33,7 +33,7 @@
             <% end %>
           <% end %>
 
-          <!-- fin du div  -->
+
 
 
 
@@ -71,6 +71,6 @@
   height: 450px;"
   data-markers="<%= @markers.to_json %>"
 >
-    <!-- gem map plus tard   -->
+
 </div>
 
