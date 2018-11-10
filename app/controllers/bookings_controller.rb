@@ -9,6 +9,9 @@ class BookingsController < ApplicationController
     @booking.end_date = convert_to(booking_params[:end_date])
     @booking.grandparent = @grandparent
     @booking.user = current_user
+
+    # have to check start and end dates of grandparent
+
     valid_dates = (@booking.start_date >= @grandparent.start_date) && (@booking.end_date <= @grandparent.end_date)
     availability = @grandparent.bookings.all? do |booking|
       (@booking.start_date < booking.start_date && @booking.end_date < booking.start_date) || (@booking.start_date > booking.end_date && @booking.end_date > booking.end_date)

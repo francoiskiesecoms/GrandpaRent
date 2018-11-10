@@ -48,6 +48,7 @@ class GrandparentsController < ApplicationController
   end
 
   def show
+
     @grandparent = Grandparent.find(params[:id])
     @booking = Booking.new
     @markers =
@@ -77,7 +78,7 @@ class GrandparentsController < ApplicationController
     end
 
     if @grandparent.save
-      redirect_to profile_path
+      redirect_to profile_path(current_user)
     else
       render :edit
     end
